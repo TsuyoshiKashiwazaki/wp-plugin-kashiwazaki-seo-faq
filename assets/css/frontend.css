@@ -1,0 +1,140 @@
+/**
+ * Kashiwazaki SEO FAQ - フロントエンドスタイル
+ */
+
+.kashiwazaki-seo-faq {
+    margin: 2rem 0;
+}
+
+.kashiwazaki-faq-item {
+    margin-bottom: 1rem;
+    border: 1px solid;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.kashiwazaki-faq-icon {
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* アコーディオン型 */
+.kashiwazaki-seo-faq-accordion .kashiwazaki-faq-question {
+    width: 100%;
+    padding: 1.25rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.kashiwazaki-seo-faq-accordion .kashiwazaki-faq-question:hover {
+    background-color: #f3f4f6;
+}
+
+.kashiwazaki-seo-faq-accordion .kashiwazaki-faq-question:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: -2px;
+}
+
+.kashiwazaki-seo-faq-accordion .kashiwazaki-faq-question-text {
+    flex: 1;
+}
+
+.kashiwazaki-seo-faq-accordion .kashiwazaki-faq-toggle {
+    margin-left: 0.75rem;
+    transition: transform 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.kashiwazaki-seo-faq-accordion .kashiwazaki-faq-question[aria-expanded="true"] .kashiwazaki-faq-toggle {
+    transform: rotate(180deg);
+}
+
+.kashiwazaki-seo-faq-accordion .kashiwazaki-faq-answer {
+    padding: 0 1.25rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.kashiwazaki-seo-faq-accordion .kashiwazaki-faq-answer:not([hidden]) {
+    max-height: 2000px;
+    padding: 1.25rem;
+}
+
+.kashiwazaki-seo-faq-accordion .kashiwazaki-faq-answer-inner {
+    display: flex;
+    align-items: flex-start;
+}
+
+.kashiwazaki-seo-faq-accordion .kashiwazaki-faq-answer-text {
+    flex: 1;
+    line-height: 1.6;
+}
+
+/* シンプル型 */
+.kashiwazaki-seo-faq-simple .kashiwazaki-faq-question {
+    padding: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    font-weight: 600;
+}
+
+.kashiwazaki-seo-faq-simple .kashiwazaki-faq-question-text {
+    flex: 1;
+    line-height: 1.6;
+}
+
+.kashiwazaki-seo-faq-simple .kashiwazaki-faq-answer {
+    padding: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    border-top: 1px solid;
+}
+
+.kashiwazaki-seo-faq-simple .kashiwazaki-faq-answer-text {
+    flex: 1;
+    line-height: 1.6;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+    .kashiwazaki-faq-item {
+        margin-bottom: 0.75rem;
+    }
+
+    .kashiwazaki-seo-faq-accordion .kashiwazaki-faq-question,
+    .kashiwazaki-seo-faq-accordion .kashiwazaki-faq-answer,
+    .kashiwazaki-seo-faq-simple .kashiwazaki-faq-question,
+    .kashiwazaki-seo-faq-simple .kashiwazaki-faq-answer {
+        padding: 1rem;
+    }
+
+    .kashiwazaki-faq-icon {
+        margin-right: 0.5rem;
+    }
+}
+
+/* アクセシビリティ */
+@media (prefers-reduced-motion: reduce) {
+    .kashiwazaki-seo-faq-accordion .kashiwazaki-faq-answer,
+    .kashiwazaki-seo-faq-accordion .kashiwazaki-faq-toggle {
+        transition: none;
+    }
+}
+
+/* プリント時の調整 */
+@media print {
+    .kashiwazaki-seo-faq-accordion .kashiwazaki-faq-answer {
+        max-height: none !important;
+        padding: 1.25rem !important;
+    }
+
+    .kashiwazaki-seo-faq-accordion .kashiwazaki-faq-toggle {
+        display: none;
+    }
+}

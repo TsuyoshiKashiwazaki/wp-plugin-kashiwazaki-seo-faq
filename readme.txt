@@ -4,7 +4,7 @@ Tags: faq, schema, structured-data, block, gutenberg
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,10 +74,17 @@ Kashiwazaki SEO FAQは、投稿、固定ページ、カスタム投稿でFAQを�
 
 == Changelog ==
 
+= 1.0.1 =
+* 設定保存時のバグを修正（基本設定とデザイン設定を行き来すると片方の設定がリセットされる問題）
+* フォントサイズのCSS優先度を強化（各種テーマとの互換性向上）
+
 = 1.0.0 =
 * 初回リリース
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+設定保存のバグ修正とCSS互換性の改善を行いました。
 
 = 1.0.0 =
 初回リリースです。

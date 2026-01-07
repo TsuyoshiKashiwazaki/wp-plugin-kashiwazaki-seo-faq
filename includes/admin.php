@@ -124,7 +124,8 @@ class Kashiwazaki_SEO_FAQ_Admin {
     }
 
     public function sanitize_options($input) {
-        $sanitized = array();
+        // 既存のオプション値を取得してベースにする（タブ間の設定リセットを防止）
+        $sanitized = get_option('kashiwazaki_seo_faq_options', array());
 
         $sanitized['enable_structured_data'] = isset($input['enable_structured_data']) ? true : false;
 

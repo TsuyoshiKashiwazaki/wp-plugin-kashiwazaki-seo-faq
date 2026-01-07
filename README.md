@@ -1,6 +1,6 @@
 # Kashiwazaki SEO FAQ
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)
 ![WordPress](https://img.shields.io/badge/WordPress-6.0+-blue.svg)
 ![PHP](https://img.shields.io/badge/PHP-7.4+-blue.svg)
 ![License](https://img.shields.io/badge/license-GPL--2.0+-blue.svg)
@@ -101,6 +101,10 @@ kashiwazaki-seo-faq/
 現在、カスタムアクションは提供していません。
 
 ## 更新履歴
+
+### [1.0.1] - 2026-01-07
+- **修正**: 設定保存時のバグを修正（基本設定とデザイン設定を行き来すると片方の設定がリセットされる問題）
+- **修正**: フォントサイズのCSS優先度を強化（各種テーマとの互換性向上）
 
 ### [1.0.0] - 2025-11-21
 - **追加**: 初回リリース

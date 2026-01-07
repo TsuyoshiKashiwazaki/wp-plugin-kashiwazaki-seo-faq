@@ -89,16 +89,16 @@ class Kashiwazaki_SEO_FAQ_Block {
                 border-color: {$border_color};
             }
             .kashiwazaki-faq-icon {
-                font-size: {$icon_size};
+                font-size: {$icon_size} !important;
             }
             .kashiwazaki-seo-faq-accordion .kashiwazaki-faq-question {
                 background-color: {$question_bg_color};
                 color: {$question_text_color};
-                font-size: {$question_font_size};
+                font-size: {$question_font_size} !important;
             }
             .kashiwazaki-seo-faq-accordion .kashiwazaki-faq-answer-text {
                 color: {$answer_text_color};
-                font-size: {$answer_font_size};
+                font-size: {$answer_font_size} !important;
             }
             .kashiwazaki-seo-faq-accordion .kashiwazaki-faq-answer {
                 border-top-color: {$border_color};
@@ -106,7 +106,7 @@ class Kashiwazaki_SEO_FAQ_Block {
             .kashiwazaki-seo-faq-simple .kashiwazaki-faq-question {
                 background-color: {$question_bg_color};
                 color: {$question_text_color};
-                font-size: {$question_font_size};
+                font-size: {$question_font_size} !important;
             }
             .kashiwazaki-seo-faq-simple .kashiwazaki-faq-answer {
                 background-color: {$answer_bg_color};
@@ -114,7 +114,7 @@ class Kashiwazaki_SEO_FAQ_Block {
             }
             .kashiwazaki-seo-faq-simple .kashiwazaki-faq-answer-text {
                 color: {$answer_text_color};
-                font-size: {$answer_font_size};
+                font-size: {$answer_font_size} !important;
             }
         ";
 

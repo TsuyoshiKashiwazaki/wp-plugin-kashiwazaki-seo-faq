@@ -3,7 +3,7 @@
  * Plugin Name: Kashiwazaki SEO FAQ
  * Plugin URI: https://www.tsuyoshikashiwazaki.jp
  * Description: シンプルで使いやすいFAQブロックを提供し、FAQPage構造化データに対応したプラグインです。投稿、固定ページ、カスタム投稿でFAQを作成できます。
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: 柏崎剛 (Tsuyoshi Kashiwazaki)
  * Author URI: https://www.tsuyoshikashiwazaki.jp/profile/
  * Text Domain: kashiwazaki-seo-faq
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('KASHIWAZAKI_SEO_FAQ_VERSION', '1.0.0');
+define('KASHIWAZAKI_SEO_FAQ_VERSION', '1.0.1');
 define('KASHIWAZAKI_SEO_FAQ_PATH', plugin_dir_path(__FILE__));
 define('KASHIWAZAKI_SEO_FAQ_URL', plugin_dir_url(__FILE__));
 

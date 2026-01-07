@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2026-01-07
+
+### Fixed
+- 設定保存時のバグを修正（基本設定とデザイン設定を行き来すると片方の設定がリセットされる問題）
+- フォントサイズのCSS優先度を強化（各種テーマとの互換性向上）
+
 ## [1.0.0] - 2025-11-21
 
 ### Added

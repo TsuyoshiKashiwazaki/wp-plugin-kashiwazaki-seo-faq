@@ -127,52 +127,64 @@ class Kashiwazaki_SEO_FAQ_Admin {
         // 既存のオプション値を取得してベースにする（タブ間の設定リセットを防止）
         $sanitized = get_option('kashiwazaki_seo_faq_options', array());
 
-        $sanitized['enable_structured_data'] = isset($input['enable_structured_data']) ? true : false;
+        // どのタブから保存されたかを判定
+        // 基本設定タブには default_display_type が含まれる
+        // デザイン設定タブには question_bg_color が含まれる
+        $is_basic_tab = isset($input['default_display_type']);
+        $is_design_tab = isset($input['question_bg_color']);
 
-        if (isset($input['default_display_type']) && in_array($input['default_display_type'], array('accordion', 'simple'))) {
-            $sanitized['default_display_type'] = $input['default_display_type'];
-        } else {
-            $sanitized['default_display_type'] = 'accordion';
+        // 基本設定タブからの保存の場合のみ、基本設定フィールドを更新
+        if ($is_basic_tab) {
+            $sanitized['enable_structured_data'] = isset($input['enable_structured_data']) ? true : false;
+
+            if (in_array($input['default_display_type'], array('accordion', 'simple'))) {
+                $sanitized['default_display_type'] = $input['default_display_type'];
+            } else {
+                $sanitized['default_display_type'] = 'accordion';
+            }
+
+            $valid_question_icons = array('❓', 'Q', '🤔', '💬', '❔', '？');
+            if (isset($input['question_icon']) && in_array($input['question_icon'], $valid_question_icons)) {
+                $sanitized['question_icon'] = $input['question_icon'];
+            } elseif (!isset($sanitized['question_icon'])) {
+                $sanitized['question_icon'] = '❓';
+            }
+
+            $valid_answer_icons = array('💡', 'A', '✅', '✔', '💬', '！');
+            if (isset($input['answer_icon']) && in_array($input['answer_icon'], $valid_answer_icons)) {
+                $sanitized['answer_icon'] = $input['answer_icon'];
+            } elseif (!isset($sanitized['answer_icon'])) {
+                $sanitized['answer_icon'] = '✅';
+            }
         }
 
-        $valid_question_icons = array('❓', 'Q', '🤔', '💬', '❔', '？');
-        if (isset($input['question_icon']) && in_array($input['question_icon'], $valid_question_icons)) {
-            $sanitized['question_icon'] = $input['question_icon'];
-        } else {
-            $sanitized['question_icon'] = '❓';
-        }
+        // デザイン設定タブからの保存の場合のみ、デザイン設定フィールドを更新
+        if ($is_design_tab) {
+            $sanitized['question_bg_color'] = sanitize_hex_color($input['question_bg_color']) ?: '#f9fafb';
+            $sanitized['question_text_color'] = isset($input['question_text_color']) ? (sanitize_hex_color($input['question_text_color']) ?: '#1f2937') : '#1f2937';
+            $sanitized['answer_bg_color'] = isset($input['answer_bg_color']) ? (sanitize_hex_color($input['answer_bg_color']) ?: '#ffffff') : '#ffffff';
+            $sanitized['answer_text_color'] = isset($input['answer_text_color']) ? (sanitize_hex_color($input['answer_text_color']) ?: '#4b5563') : '#4b5563';
+            $sanitized['border_color'] = isset($input['border_color']) ? (sanitize_hex_color($input['border_color']) ?: '#e5e7eb') : '#e5e7eb';
 
-        $valid_answer_icons = array('💡', 'A', '✅', '✔', '💬', '！');
-        if (isset($input['answer_icon']) && in_array($input['answer_icon'], $valid_answer_icons)) {
-            $sanitized['answer_icon'] = $input['answer_icon'];
-        } else {
-            $sanitized['answer_icon'] = '✅';
-        }
+            $valid_icon_sizes = array('1rem', '1.25rem', '1.5rem');
+            if (isset($input['icon_size']) && in_array($input['icon_size'], $valid_icon_sizes)) {
+                $sanitized['icon_size'] = $input['icon_size'];
+            } elseif (!isset($sanitized['icon_size'])) {
+                $sanitized['icon_size'] = '1.25rem';
+            }
 
-        $sanitized['question_bg_color'] = isset($input['question_bg_color']) ? sanitize_hex_color($input['question_bg_color']) : '#f9fafb';
-        $sanitized['question_text_color'] = isset($input['question_text_color']) ? sanitize_hex_color($input['question_text_color']) : '#1f2937';
-        $sanitized['answer_bg_color'] = isset($input['answer_bg_color']) ? sanitize_hex_color($input['answer_bg_color']) : '#ffffff';
-        $sanitized['answer_text_color'] = isset($input['answer_text_color']) ? sanitize_hex_color($input['answer_text_color']) : '#4b5563';
-        $sanitized['border_color'] = isset($input['border_color']) ? sanitize_hex_color($input['border_color']) : '#e5e7eb';
+            $valid_font_sizes = array('0.875rem', '1rem', '1.125rem');
+            if (isset($input['question_font_size']) && in_array($input['question_font_size'], $valid_font_sizes)) {
+                $sanitized['question_font_size'] = $input['question_font_size'];
+            } elseif (!isset($sanitized['question_font_size'])) {
+                $sanitized['question_font_size'] = '1rem';
+            }
 
-        $valid_icon_sizes = array('1rem', '1.25rem', '1.5rem');
-        if (isset($input['icon_size']) && in_array($input['icon_size'], $valid_icon_sizes)) {
-            $sanitized['icon_size'] = $input['icon_size'];
-        } else {
-            $sanitized['icon_size'] = '1.25rem';
-        }
-
-        $valid_font_sizes = array('0.875rem', '1rem', '1.125rem');
-        if (isset($input['question_font_size']) && in_array($input['question_font_size'], $valid_font_sizes)) {
-            $sanitized['question_font_size'] = $input['question_font_size'];
-        } else {
-            $sanitized['question_font_size'] = '1rem';
-        }
-
-        if (isset($input['answer_font_size']) && in_array($input['answer_font_size'], $valid_font_sizes)) {
-            $sanitized['answer_font_size'] = $input['answer_font_size'];
-        } else {
-            $sanitized['answer_font_size'] = '1rem';
+            if (isset($input['answer_font_size']) && in_array($input['answer_font_size'], $valid_font_sizes)) {
+                $sanitized['answer_font_size'] = $input['answer_font_size'];
+            } elseif (!isset($sanitized['answer_font_size'])) {
+                $sanitized['answer_font_size'] = '1rem';
+            }
         }
 
         return $sanitized;

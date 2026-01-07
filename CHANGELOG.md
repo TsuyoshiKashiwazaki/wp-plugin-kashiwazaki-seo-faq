@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2026-01-07
+
+### Fixed
+- 設定保存時のバグを完全修正（基本設定とデザイン設定を行き来すると片方の設定がリセットされる問題）
+  - タブごとに該当フィールドのみを更新するように修正
+
 ## [1.0.1] - 2026-01-07
 
 ### Fixed

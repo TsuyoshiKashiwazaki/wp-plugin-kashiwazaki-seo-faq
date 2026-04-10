@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQブロックの使い方 - Kashiwazaki SEO FAQ マニュアル</title>
+    <link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+
+<button class="hamburger-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+
+<nav class="sidebar">
+    <div class="sidebar-header"><h2 style="color:#fff;">SEO FAQ</h2><span class="version">v1.0.2</span><img src="images/main-visual.png" alt="" style="width:100%;border-radius:4px;margin-top:8px;"></div>
+    <ul><li><a href="index.html">概要</a></li><li><a href="setup.html">インストール・初期設定</a></li><li><a href="faq-block.html">FAQブロックの使い方</a></li><li><a href="troubleshooting.html">トラブルシューティング</a></li></ul>
+</nav>
+
+<main class="content">
+    <h1>FAQブロックの使い方</h1>
+
+    <p class="lead">ブロックエディタ（Gutenberg）でFAQブロックを挿入し、質問と回答を入力する方法を説明します。アコーディオン表示とシンプル表示の切り替えや、構造化データの自動出力について解説します。</p>
+
+    <h2>FAQブロックの挿入</h2>
+
+    <figure class="screenshot">
+        <img src="images/screenshots/02-faq-detail.png" alt="FAQ設定画面" class="lightbox-trigger">
+        <figcaption>FAQブロックの設定オプション</figcaption>
+    </figure>
+
+    <h3>フロントエンド表示例</h3>
+    <figure class="screenshot">
+        <img src="images/screenshots/03-frontend-faq.png" alt="FAQアコーディオンの表示例" class="lightbox-trigger">
+        <figcaption>フロントエンドでのFAQブロック表示</figcaption>
+    </figure>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        <div class="step-body">
+            <p>投稿または固定ページの編集画面を開き、ブロック挿入ボタン（+）をクリックします。</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        <div class="step-body">
+            <p>検索ボックスに「FAQ」と入力し、「Kashiwazaki SEO FAQ」ブロックを選択します。</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        <div class="step-body">
+            <p>FAQブロックが挿入されたら、質問（Q）と回答（A）のフィールドにテキストを入力します。</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <span class="step-number">4</span>
+        <div class="step-body">
+            <p>質問・回答のペアを追加するには、ブロック内の「項目を追加」ボタンをクリックします。必要な数だけQ&Aペアを追加できます。</p>
+        </div>
+    </div>
+
+    <div class="callout callout-tip">
+        <p class="callout-title">ヒント</p>
+        <p>1ページに複数のFAQブロックを配置できます。すべてのFAQブロックの内容が1つのFAQPage構造化データとして統合されます。</p>
+    </div>
+
+    <h2>表示モードの切り替え</h2>
+
+    <p>FAQブロックには2つの表示モードがあります。ブロックのサイドバー設定パネルから切り替えられます。</p>
+
+    <table class="widefat">
+        <thead>
+            <tr>
+                <th style="width:35%;">表示モード</th>
+                <th>説明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>アコーディオン</td>
+                <td>質問をクリックすると回答が展開・折りたたまれます。FAQ数が多い場合に適しています</td>
+            </tr>
+            <tr>
+                <td>シンプル</td>
+                <td>すべての質問と回答が常に表示されます。FAQ数が少ない場合に適しています</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-note">
+        <p class="callout-title">補足</p>
+        <p>アコーディオンの開閉処理はフロントエンドJS（1.6KB）で実行されます。外部ライブラリやAJAX通信は使用しません。</p>
+    </div>
+
+    <h2>構造化データ（FAQPage JSON-LD）</h2>
+
+    <p>FAQブロックが含まれるページを公開すると、<code>wp_footer</code>アクションで自動的にFAQPageスキーマ（JSON-LD形式）が出力されます。</p>
+
+    <h3>出力される構造化データの例</h3>
+
+    <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "質問テキスト",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "回答テキスト"
+      }
+    }
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+    <div class="callout callout-tip">
+        <p class="callout-title">SEOへの効果</p>
+        <p>FAQPageスキーマにより、Google検索結果にFAQリッチリザルトとして表示される可能性があります。また、AI検索エンジン（GEO）がQ&Aペアを構造化データから直接抽出し、回答に利用できます。</p>
+    </div>
+
+    <h2>デザインのカスタマイズ</h2>
+
+    <p>管理画面の設定ページ（SEO FAQ）でFAQブロックの見た目をカスタマイズできます。</p>
+
+    <table class="widefat">
+        <thead>
+            <tr>
+                <th style="width:35%;">カスタマイズ項目</th>
+                <th>説明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>質問アイコン</td>
+                <td>質問の先頭に表示されるアイコン文字を変更できます</td>
+            </tr>
+            <tr>
+                <td>回答アイコン</td>
+                <td>回答の先頭に表示されるアイコン文字を変更できます</td>
+            </tr>
+            <tr>
+                <td>アイコン色</td>
+                <td>質問・回答それぞれのアイコン色を指定できます</td>
+            </tr>
+            <tr>
+                <td>フォントサイズ</td>
+                <td>質問・回答テキストのフォントサイズを調整できます</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-warning">
+        <p class="callout-title">注意</p>
+        <p>デザイン設定の変更には<code>manage_options</code>権限（管理者）が必要です。編集者以下の権限ではFAQブロックの使用は可能ですが、デザイン設定の変更はできません。</p>
+    </div>
+
+    <h2>フロントエンドのファイルサイズ</h2>
+
+    <table class="widefat">
+        <thead>
+            <tr>
+                <th style="width:35%;">ファイル</th>
+                <th>サイズ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>フロントエンドCSS</td>
+                <td>3.2KB</td>
+            </tr>
+            <tr>
+                <td>フロントエンドJS</td>
+                <td>1.6KB</td>
+            </tr>
+            <tr>
+                <td>ブロックエディタJS</td>
+                <td>7.2KB（管理画面のみ読み込み）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <nav class="page-nav">
+        <a href="setup.html" class="prev">&laquo; インストール・初期設定</a>
+        <a href="troubleshooting.html" class="next">トラブルシューティング &raquo;</a>
+    </div>
+
+    <footer class="manual-footer"><p>作者: <a href="https://www.tsuyoshikashiwazaki.jp/profile/" target="_blank" rel="noopener">柏崎剛（Tsuyoshi Kashiwazaki）</a></p><p>プラグイン: Kashiwazaki SEO FAQ v1.0.2</p></footer>
+</main>
+
+<div class="lightbox"></div>
+<script src="js/manual.js?v=1"></script>
+</body>
+</html>

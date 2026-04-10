@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>インストール・初期設定 - Kashiwazaki SEO FAQ マニュアル</title>
+    <link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+
+<button class="hamburger-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+
+<nav class="sidebar">
+    <div class="sidebar-header"><h2 style="color:#fff;">SEO FAQ</h2><span class="version">v1.0.2</span><img src="images/main-visual.png" alt="" style="width:100%;border-radius:4px;margin-top:8px;"></div>
+    <ul><li><a href="index.html">概要</a></li><li><a href="setup.html">インストール・初期設定</a></li><li><a href="faq-block.html">FAQブロックの使い方</a></li><li><a href="troubleshooting.html">トラブルシューティング</a></li></ul>
+</nav>
+
+<main class="content">
+    <h1>インストール・初期設定</h1>
+
+    <p class="lead">Kashiwazaki SEO FAQ のインストールから初期設定までの手順を説明します。外部通信やCronジョブは使用しないため、シンプルにセットアップできます。</p>
+
+    <h2>インストール手順</h2>
+
+    <div class="step">
+        <span class="step-number">1</span>
+        <div class="step-body">
+            <p>WordPress管理画面の「プラグイン」→「新規追加」→「プラグインのアップロード」からZIPファイルをアップロードします。または、<code>wp-content/plugins/</code> ディレクトリにFTPで展開します。</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <span class="step-number">2</span>
+        <div class="step-body">
+            <p>「プラグイン」一覧画面で「Kashiwazaki SEO FAQ」を有効化します。</p>
+        </div>
+    </div>
+
+    <div class="step">
+        <span class="step-number">3</span>
+        <div class="step-body">
+            <p>有効化後、管理画面の左メニューに「SEO FAQ」が追加されます。設定ページ（<code>kashiwazaki-seo-faq</code>）にアクセスしてデザインをカスタマイズできます。</p>
+        </div>
+    </div>
+
+    <figure class="screenshot">
+        <img src="images/screenshots/00-menu-location.png" alt="管理画面メニューの位置" class="lightbox-trigger">
+        <figcaption>管理画面の左メニューにプラグインが追加されます</figcaption>
+    </figure>
+
+    <div class="callout callout-tip">
+        <p class="callout-title">ヒント</p>
+        <p>プラグインの有効化直後からFAQブロックが使用可能です。特別な初期設定は不要ですが、デザインのカスタマイズを行う場合は設定ページから調整してください。</p>
+    </div>
+
+    <h2>設定ページ</h2>
+
+    <p>管理画面の左メニュー「SEO FAQ」をクリックすると設定ページが表示されます。ここで質問・回答の表示スタイルをカスタマイズできます。</p>
+
+    <h3>設定項目</h3>
+
+    <table class="widefat">
+        <thead>
+            <tr>
+                <th style="width:35%;">設定項目</th>
+                <th>説明</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>質問アイコン</td>
+                <td>質問の先頭に表示されるアイコン（Q など）を設定します</td>
+            </tr>
+            <tr>
+                <td>回答アイコン</td>
+                <td>回答の先頭に表示されるアイコン（A など）を設定します</td>
+            </tr>
+            <tr>
+                <td>アイコン色</td>
+                <td>質問・回答アイコンの色をカラーピッカーで指定します</td>
+            </tr>
+            <tr>
+                <td>フォントサイズ</td>
+                <td>質問・回答テキストのフォントサイズを設定します</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-note">
+        <p class="callout-title">補足</p>
+        <p>設定の保存にはnonce検証と<code>manage_options</code>権限が必要です。管理者権限を持つユーザーのみ設定を変更できます。入力値は<code>sanitize_text_field</code>でサニタイズされます。</p>
+    </div>
+
+    <h2>データ保存について</h2>
+
+    <p>設定データは<code>wp_options</code>テーブルの<code>kashiwazaki_seo_faq_options</code>キーに保存されます。カスタムテーブルは作成しません。</p>
+
+    <table class="widefat">
+        <thead>
+            <tr>
+                <th style="width:35%;">項目</th>
+                <th>内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>保存先</td>
+                <td>wp_options テーブル</td>
+            </tr>
+            <tr>
+                <td>オプションキー</td>
+                <td>kashiwazaki_seo_faq_options</td>
+            </tr>
+            <tr>
+                <td>カスタムテーブル</td>
+                <td>なし</td>
+            </tr>
+            <tr>
+                <td>外部通信</td>
+                <td>なし（AJAX、HTTP通信、メール送信は行いません）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <nav class="page-nav">
+        <a href="index.html" class="prev">&laquo; 概要</a>
+        <a href="faq-block.html" class="next">FAQブロックの使い方 &raquo;</a>
+    </div>
+
+    <footer class="manual-footer"><p>作者: <a href="https://www.tsuyoshikashiwazaki.jp/profile/" target="_blank" rel="noopener">柏崎剛（Tsuyoshi Kashiwazaki）</a></p><p>プラグイン: Kashiwazaki SEO FAQ v1.0.2</p></footer>
+</main>
+
+<div class="lightbox"></div>
+<script src="js/manual.js?v=1"></script>
+</body>
+</html>
